@@ -32,8 +32,8 @@ def is_valid_password(password):
     return True
 
 @app.route('/')
-def home():
-    return render_template("home.html")
+def index():
+    return render_template("index.html")
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
