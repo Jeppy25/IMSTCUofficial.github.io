@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Dashboard</title>
+    <!-- Main CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css" />
+    <!-- Font-icon css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Custom CSS For Table-->
+    <style>
+      .table th,
+      .table td {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="app sidebar-mini">
+    <!-- Navbar-->
+    <header class="app-header">
+      <a class="app-header__logo" href="{{ url_for('Admin') }}">Com Lab</a>
+      <!-- Sidebar toggle button-->
+      <a
+        class="app-sidebar__toggle"
+        href="#"
+        data-toggle="sidebar"
+        aria-label="Hide Sidebar"></a>
+      <!-- Navbar Right Menu-->
+      <ul class="app-nav">
+        <li class="app-search">
+          <input class="app-search__input" type="search" placeholder="Search" />
+          <button class="app-search__button">
+            <i class="bi bi-search"></i>
+          </button>
+        </li>
+        <!--Notification Menu-->
+        <li class="dropdown">
+          <a
+            class="app-nav__item"
+            href="#"
+            data-bs-toggle="dropdown"
+            aria-label="Show notifications"><i class="bi bi-bell fs-5"></i></a>
+          <ul class="app-notification dropdown-menu dropdown-menu-right">
+            <li class="app-notification__title">
+              You have 4 new notifications.
+            </li>
+            <div class="app-notification__content">
+              <li>
+                <a class="app-notification__item" href="javascript:;"><span
+                    class="app-notification__icon"><i
+                      class="bi bi-envelope fs-4 text-primary"></i></span>
+                  <div>
+                    <p class="app-notification__message">
+                      Lisa sent you a mail
+                    </p>
+                    <p class="app-notification__meta">2 min ago</p>
+                  </div></a>
+              </li>
+              <li>
+                <a class="app-notification__item" href="javascript:;"><span
+                    class="app-notification__icon"><i
+                      class="bi bi-exclamation-triangle fs-4 text-warning"></i></span>
+                  <div>
+                    <p class="app-notification__message">
+                      Mail server not working
+                    </p>
+                    <p class="app-notification__meta">5 min ago</p>
+                  </div></a>
+              </li>
+              <li>
+                <a class="app-notification__item" href="javascript:;"><span
+                    class="app-notification__icon"><i
+                      class="bi bi-cash fs-4 text-success"></i></span>
+                  <div>
+                    <p class="app-notification__message">
+                      Transaction complete
+                    </p>
+                    <p class="app-notification__meta">2 days ago</p>
+                  </div></a>
+              </li>
+              <li>
+                <a class="app-notification__item" href="javascript:;"><span
+                    class="app-notification__icon"><i
+                      class="bi bi-envelope fs-4 text-primary"></i></span>
+                  <div>
+                    <p class="app-notification__message">
+                      Lisa sent you a mail
+                    </p>
+                    <p class="app-notification__meta">2 min ago</p>
+                  </div></a>
+              </li>
+              <li>
+                <a class="app-notification__item" href="javascript:;"><span
+                    class="app-notification__icon"><i
+                      class="bi bi-exclamation-triangle fs-4 text-warning"></i></span>
+                  <div>
+                    <p class="app-notification__message">
+                      Mail server not working
+                    </p>
+                    <p class="app-notification__meta">5 min ago</p>
+                  </div></a>
+              </li>
+              <li>
+                <a class="app-notification__item" href="javascript:;"><span
+                    class="app-notification__icon"><i
+                      class="bi bi-cash fs-4 text-success"></i></span>
+                  <div>
+                    <p class="app-notification__message">
+                      Transaction complete
+                    </p>
+                    <p class="app-notification__meta">2 days ago</p>
+                  </div></a>
+              </li>
+            </div>
+            <li class="app-notification__footer">
+              <a href="#">See all notifications.</a>
+            </li>
+          </ul>
+        </li>
+        <!-- User Menu-->
+        <li class="dropdown">
+          <a
+            class="app-nav__item"
+            href="#"
+            data-bs-toggle="dropdown"
+            aria-label="Open Profile Menu"><i class="bi bi-person fs-4"></i></a>
+          <ul class="dropdown-menu settings-menu dropdown-menu-right">
+            <li>
+              <a class="dropdown-item" href="page-user.html"><i
+                  class="bi bi-gear me-2 fs-5"></i> Settings</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="page-user.html"><i
+                  class="bi bi-person me-2 fs-5"></i> Profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{ url_for('logout') }}"><i
+                  class="bi bi-box-arrow-right me-2 fs-5"></i> Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">
+      <div class="app-sidebar__user">
+        <img class="app-sidebar__user-avatar" src="static/images/TCU.png" />
+        <div>
+          <p class="app-sidebar__user-name">TCU</p>
+          <p class="app-sidebar__user-designation">Inventory System</p>
+        </div>
+      </div>
+      <ul class="app-menu">
+        <li>
+          <a class="app-menu__item active" href="{{ url_for('Admin') }}"><i
+              class="app-menu__icon bi bi-window"></i><span
+              class="app-menu__label">Dashboard</span></a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="{{ url_for('inventory') }}"><i
+              class="app-menu__icon bi bi-table"></i><span
+              class="app-menu__label">Inventory</span></a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="{{ url_for('manage_users') }}"><i
+              class="app-menu__icon bi bi-people"></i><span
+              class="app-menu__label">Manage Users</span></a>
+        </li>
+        <li>
+          <a class="app-menu__item" href="{{ url_for('manage_reports') }}"><i
+              class="app-menu__icon bi bi bi-inboxes"></i><span
+              class="app-menu__label">Manage Reports</span></a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="app-content">
+
+      <!-- App Title -->
+      <div class="app-title">
+        <div>
+          <h1><i class="bi bi-window"> </i>Dashboard</h1>
+        </div>
+        <ul class="app-breadcrumb breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{{ url_for('Admin') }}"><i class="bi bi-house-door fs-6"></i></a>
+          </li>
+          <li class="breadcrumb-item">
+            <a>Dashboard</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Stupid Content -->
+
+      <!-- Fcking Cards -->
+      <div class="row">
+
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small primary coloured-icon">
+            <i class="icon bi bi-people fs-1"></i>
+            <div class="info">
+              <h4>Users</h4>
+              <p><b>5</b></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small info coloured-icon">
+            <i class="icon bi bi-pc-display fs-1"></i>
+            <div class="info">
+              <h4>Computers</h4>
+              <p><b>25</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small warning coloured-icon">
+            <i class="icon bi bi-folder2 fs-1"></i>
+            <div class="info">
+              <h4>Admin</h4>
+              <p><b>3</b></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="widget-small danger coloured-icon">
+            <i class="icon bi bi-envelope fs-1"></i>
+            <div class="info">
+              <h4>Reports</h4>
+              <p><b>500</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fcking Summary Table -->
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="tile">
+                <h2 class="text-center">Inventory Summary</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tile">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;"></th>
+                      <th style="width: 100px;">Status</th>
+                      <th style="width: 100px;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="3"><i class="icon bi bi-mouse fs-1"></i><div
+                          class="info"> Mouse</div></td>
+                      <td>Working</td>
+                      <td>{{ working_mouse_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Not Working</td>
+                      <td>{{ not_working_mouse_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Missing</td>
+                      <td>{{ missing_mouse_count }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tile">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;"></th>
+                      <th style="width: 100px;">Status</th>
+                      <th style="width: 100px;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="3"><i class="icon bi bi-keyboard fs-1"></i>
+                        <div
+                          class="info">Keyboard </div></td>
+                      <td>Working</td>
+                      <td>{{ working_keyboard_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Not Working</td>
+                      <td>{{ not_working_keyboard_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Missing</td>
+                      <td>{{ missing_keyboard_count }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tile">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;"></th>
+                      <th style="width: 100px;">Status</th>
+                      <th style="width: 100px;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="3"><i class="icon bi bi-tv fs-1"></i><div
+                          class="info"> Monitor </div></td>
+                      <td>Working</td>
+                      <td>{{ working_monitor_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Not Working</td>
+                      <td>{{ not_working_monitor_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Missing</td>
+                      <td>{{ missing_monitor_count }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="tile">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th style="width: 100px;"></th>
+                      <th style="width: 100px;">Status</th>
+                      <th style="width: 100px;">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="3"><i class="icon bi bi-cpu fs-1"></i> <div
+                          class="info">System Unit </div></td>
+                      <td>Working</td>
+                      <td>{{ working_system_unit_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Not Working</td>
+                      <td>{{ not_working_system_unit_count }}</td>
+                    </tr>
+                    <tr>
+                      <td>Missing</td>
+                      <td>{{ missing_system_unit_count }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Essential javascripts for application to work-->
+    <script src="static/js/jquery-3.7.0.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

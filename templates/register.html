@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Page</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style2.css" />
+    <script src="static/js/script.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="slider"></div>
+      <div class="btn">
+        <button class="clkbtn" onclick="login()">Login</button>
+        <button class="clkbtn" onclick="register()">Sign Up</button>
+      </div>
+
+      <form class="signup-box" method="post">
+        <input
+          type="text"
+          class="name ele"
+          name="username"
+          placeholder="Username"
+          required
+          value="{{ username }}" />
+        <input
+          type="text"
+          class="email ele"
+          name="last_name"
+          placeholder="Last Name"
+          required
+          value="{{ last_name }}" />
+        <input
+          type="text"
+          class="email ele"
+          name="first_name"
+          placeholder="First Name"
+          required
+          value="{{ first_name }}" />
+        <input
+          type="email"
+          class="email ele"
+          name="email"
+          placeholder="Youremail@email.com"
+          required
+          value="{{ email }}" />
+
+        <form class="gender-box" method="post">
+          <select name="gender" required>
+            <option value disabled selected>Select a Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+          </select><br>
+
+          <input
+            type="password"
+            class="password ele"
+            placeholder="Password"
+            id="password"
+            name="password"
+            required />
+          <input
+            type="password"
+            class="password ele"
+            placeholder="Confirm Password"
+            id="confirm_password"
+            name="confirm_password"
+            required />
+
+          <button
+            type="button"
+            id="togglePassword"
+            class="clkbtn"
+            onclick="togglePasswordVisibility()">
+            Show Password
+          </button><br>
+          <button type="submit" value="Submit" class="clkbtn">Sign Up</button>
+        </form>
+      </div>
+
+      <ul class="flashes" id="flash-messages">
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %} {% endif %} {% endwith %}
+      </ul>
+    </body>
+  </html>
